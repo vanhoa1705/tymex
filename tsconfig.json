@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES6",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "useDefineForClassFields": true,
+    "outDir": "./dist"
+  },
+  "include": ["src", "public", ".d.ts"],
+  "exclude": ["node_modules", "**/node_modules", "dist"]
+}
