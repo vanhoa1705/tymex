@@ -1,7 +1,7 @@
+import RootAPI from "@/api";
 import { observable } from "mobx";
-import RootAPI from "../api";
-import DataStore from "./DataStore";
 import CachedStore from "./CachedStore";
+import DataStore from "./DataStore";
 
 class RootStore {
   @observable cachedStore: CachedStore;
