@@ -1,0 +1,15 @@
+* {
+  font-family: sans-serif;
+}
+
+.ant-btn-primary {
+  background-image: @active-background-gradient;
+  background-color: transparent;
+
+  &:not(:disabled):not(.ant-btn-disabled) {
+    &:hover,
+    &:active {
+      background-image: @active-background-gradient;
+    }
+  }
+}

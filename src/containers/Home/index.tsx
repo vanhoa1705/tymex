@@ -1,7 +1,8 @@
 import { FC } from "react";
+import ProductListContainer from "@/layouts/ProductListLayout";
 
 const Home: FC = () => {
-  return <>Home</>;
+  return <ProductListContainer>Home</ProductListContainer>;
 };
 
 export default Home;
