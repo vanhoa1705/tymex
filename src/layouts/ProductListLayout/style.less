@@ -1,35 +1,44 @@
 .product-list-layout {
-  background-image: url("../../images/background-header.jpeg");
-
   .ant-layout-header {
-    background-color: #17161ab2;
-    display: flex;
-    justify-content: space-between;
+    background-image: url("/public/assets/images/background-header.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000000b2;
+    background-blend-mode: multiply;
+    padding: 0;
+    height: 60vh;
 
-    .ant-menu {
-      flex: 1;
-      background-color: transparent;
-
-      &-item {
-        font-family: Drone Ranger Pro, sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        color: #ffffff;
-      }
-    }
-
-    .extra-header {
+    .nav-menu {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      background-color: #17161ab2;
 
-      .language-dropdown {
+      .ant-menu {
+        flex: 1;
         background-color: transparent;
-        border: none;
-        color: #ffffff;
 
-        .ant-wave {
-          display: none;
+        &-item {
+          font-family: Drone Ranger Pro, sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          color: #ffffff;
+        }
+      }
+
+      .extra-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .language-dropdown {
+          background-color: transparent;
+          border: none;
+          color: #ffffff;
+
+          .ant-wave {
+            display: none;
+          }
         }
       }
     }
