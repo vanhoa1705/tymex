@@ -3,12 +3,20 @@ import { FC, PropsWithChildren } from "react";
 
 import ProductListHeader from "@/components/ProductListHeader";
 import "./style.less";
+import classNames from "classnames";
 
 const { Content, Footer } = Layout;
 
-const ProductListContainer: FC<PropsWithChildren> = ({ children }) => {
+interface IProductListContainerProps extends PropsWithChildren {
+  className?: string;
+}
+
+const ProductListContainer: FC<IProductListContainerProps> = ({
+  children,
+  className,
+}) => {
   return (
-    <Layout className="product-list-layout">
+    <Layout className={classNames("product-list-layout", className)}>
       <ProductListHeader />
       <Content>{children}</Content>
       <Footer style={{ textAlign: "center" }}>

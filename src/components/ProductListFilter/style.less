@@ -1,0 +1,39 @@
+@import "@/styles/variables.less";
+
+.product-list-filter-wrapper {
+  max-width: 350px;
+
+  .ant-form-item {
+    &-label label {
+      color: @white;
+    }
+  }
+
+  .search-input {
+    border: 1px solid @taupe-gray;
+    background-color: transparent;
+    color: @taupe-gray;
+    border-radius: 4px;
+
+    input {
+      &::placeholder {
+        color: @taupe-gray;
+      }
+    }
+  }
+
+  .price-filter {
+    .ant-slider-mark-text {
+      white-space: nowrap;
+      color: @light-silver;
+
+      &:first-child {
+        transform: translateX(-5px) !important;
+      }
+
+      &:last-child {
+        transform: translateX(-100%) !important;
+      }
+    }
+  }
+}
