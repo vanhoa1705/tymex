@@ -1,11 +1,11 @@
 @import "@/styles/variables.less";
 
 .product-list-filter-wrapper {
-  max-width: 350px;
+  width: 350px;
 
   .ant-form-item {
     &-label label {
-      color: @white;
+      color: @taupe-gray;
     }
   }
 
@@ -33,6 +33,49 @@
 
       &:last-child {
         transform: translateX(-100%) !important;
+      }
+    }
+
+    .ant-form-item {
+      &-label label {
+        color: @white;
+      }
+    }
+  }
+
+  .ant-select {
+    & .ant-select-selector {
+      background-color: transparent;
+      border-color: @dark-gray;
+    }
+
+    &-selection {
+      &-item {
+        color: @white !important;
+      }
+    }
+
+    &-arrow {
+      color: @white;
+    }
+  }
+
+  .filter-actions {
+    display: flex;
+
+    .search-button {
+      margin-left: auto;
+
+      button {
+        width: 160px;
+      }
+    }
+
+    .reset-filter {
+      button {
+        svg {
+          color: @ripe-mango;
+        }
       }
     }
   }

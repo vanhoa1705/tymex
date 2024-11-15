@@ -7,7 +7,7 @@ import './App.less'
 
 const theme = {
   token: {
-    colorPrimary: '#DA458F', // Set your primary color
+    colorPrimary: '#fff', // Set your primary color
   },
   hashed: false
 };

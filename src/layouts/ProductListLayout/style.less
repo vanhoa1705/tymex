@@ -1,4 +1,6 @@
 .product-list-layout {
+  background-image: url("/public/assets/images/background-body.png");
+
   .ant-layout-header {
     background-image: url("/public/assets/images/background-header.jpeg");
     background-size: cover;
@@ -44,14 +46,30 @@
     }
   }
 
-  .ant-layout-content {
-    background-image: url("/public/assets/images/background-body.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 1000px;
+  .ant-layout-sider {
+    background-color: transparent;
+  }
+
+  .product-list-content {
     display: flex;
     justify-content: center;
-    padding: 150px 100px;
+    padding: 160px 0;
+  }
+
+  .main-layout {
+    background: transparent;
+    max-width: 1500px;
+    gap: 40px;
+
+    &.ant-layout {
+      &-content {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 1000px;
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 }

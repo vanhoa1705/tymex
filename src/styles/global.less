@@ -2,14 +2,22 @@
   font-family: sans-serif;
 }
 
-.ant-btn-primary {
-  background-image: @active-background-gradient;
-  background-color: transparent;
+.ant-btn {
+  color: @white;
 
-  &:not(:disabled):not(.ant-btn-disabled) {
-    &:hover,
-    &:active {
-      background-image: @active-background-gradient;
+  &:hover {
+    color: @white !important;
+  }
+
+  &-primary {
+    background-image: @active-background-gradient;
+    background-color: transparent;
+
+    &:not(:disabled):not(.ant-btn-disabled) {
+      &:hover,
+      &:active {
+        background-image: @active-background-gradient;
+      }
     }
   }
 }
