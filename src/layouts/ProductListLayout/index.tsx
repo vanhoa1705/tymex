@@ -5,8 +5,9 @@ import ProductListHeader from "@/components/ProductListHeader";
 import "./style.less";
 import classNames from "classnames";
 import ProductListFilter from "@/components/ProductListFilter";
+import FooterPage from "@/components/FooterPage";
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 interface IProductListContainerProps extends PropsWithChildren {
   className?: string;
@@ -28,9 +29,7 @@ const ProductListContainer: FC<IProductListContainerProps> = ({
         </Layout>
         <div className="footer-product-list" />
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
+      <FooterPage />
     </Layout>
   );
 };

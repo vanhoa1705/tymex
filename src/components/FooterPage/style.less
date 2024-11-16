@@ -1,0 +1,89 @@
+@import "@/styles/variables.less";
+
+.footer-page-wrapper {
+  background-color: #17161a;
+  color: @white;
+  padding: 60px 160px;
+
+  .footer-title {
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: @dragon-font;
+  }
+
+  .footer-item {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .footer-detail {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    .navigations {
+      width: 360px;
+
+      .footer-item {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+    }
+
+    .contact-us {
+      width: 250px;
+
+      .footer-item {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        .contact {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+
+          svg {
+            width: 24px;
+            height: 24px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+
+    .subcribe {
+      width: 600px;
+
+      .footer-item {
+        display: flex;
+        gap: 20px;
+
+        .email-input {
+          border: 1px solid @taupe-gray;
+          background-color: transparent;
+          color: @taupe-gray;
+          border-radius: 4px;
+
+          &::placeholder {
+            color: @taupe-gray;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+
+    .links {
+      display: flex;
+      gap: 60px;
+    }
+  }
+}
