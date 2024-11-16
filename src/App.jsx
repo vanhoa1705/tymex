@@ -3,6 +3,8 @@ import { ConfigProvider } from 'antd';
 import rootStore from "@/stores";
 import Router from "@/router/routes"
 
+import "reflect-metadata";
+
 import './App.less'
 
 const theme = {
@@ -14,11 +16,11 @@ const theme = {
 
 const App = () => {
   return (
-    <ConfigProvider theme={theme}>
-      <Provider {...rootStore}>
+    <Provider {...rootStore}>
+      <ConfigProvider theme={theme}>
         <Router />
-      </Provider>
-    </ConfigProvider>
+      </ConfigProvider>
+    </Provider>
   );
 };
 

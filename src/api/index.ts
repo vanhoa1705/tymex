@@ -1,14 +1,14 @@
 import { RootStore } from "../stores";
-import DataAPI from "./Data";
+import ProductAPI from "./ProductAPI";
 import Request from "./requests";
 
 export default class RootAPI {
-  dataAPI: DataAPI;
+  productAPI: ProductAPI;
 
   constructor(args: { rootStore: RootStore }) {
     const { rootStore } = args;
     const request = new Request({ rootStore });
 
-    this.dataAPI = new DataAPI({ request });
+    this.productAPI = new ProductAPI({ request });
   }
 }

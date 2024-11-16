@@ -4,7 +4,7 @@ import "./style.less";
 
 const Home: FC = () => {
   return (
-    <div className="product-list-wrapper">
+    <div className="product-list-container">
       <div className="categories">categories</div>
       <div className="product-list">
         <ProductList />

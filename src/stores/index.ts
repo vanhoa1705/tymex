@@ -1,17 +1,21 @@
-import RootAPI from "@/api";
-import { observable } from "mobx";
-import CachedStore from "./CachedStore";
-import DataStore from "./DataStore";
+import RootAPI from "../api";
+import { makeObservable } from "mobx";
+import LoadingStore from "./LoadingStore";
+import ProductStore from "./ProductStore";
 
 class RootStore {
-  @observable cachedStore: CachedStore;
-  dataStore: DataStore;
+  productStore: ProductStore;
+  loadingStore: LoadingStore;
+  rootAPI: RootAPI;
 
   constructor() {
-    const rootAPI = new RootAPI({ rootStore: this });
+    makeObservable(this);
 
-    this.dataStore = new DataStore({ rootAPI: rootAPI, rootStore: this });
-    this.cachedStore = new CachedStore();
+    const rootAPI = new RootAPI({ rootStore: this });
+    this.rootAPI = rootAPI;
+
+    this.productStore = new ProductStore({ rootAPI: rootAPI, rootStore: this });
+    this.loadingStore = new LoadingStore({ rootAPI: rootAPI, rootStore: this });
   }
 }
 

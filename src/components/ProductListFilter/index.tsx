@@ -1,53 +1,96 @@
-import { FC } from "react";
+import { DEFAULT_PAGINATION } from "@/constants/general";
+import { ProductTheme, ProductTier, SortType } from "@/enums";
+import { formatPrice } from "@/helpers";
+import { useStores } from "@/hooks";
+import type { SearchProductListParam } from "@/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Form, Input, Select, Slider, SliderSingleProps } from "antd";
+import { FC } from "react";
 import "./style.less";
-import { DefaultOptionType } from "antd/es/select";
 
 const { useForm, Item } = Form;
 
-const SLIDER_RANGE = [0.01, 200];
+const SLIDER_RANGE: [number, number] = [0.01, 200];
 
-const TierOptions: DefaultOptionType[] = [
-  { value: "jack", label: "Jack" },
-  { value: "lucy", label: "Lucy" },
-  { value: "Yiminghe", label: "yiminghe" },
-  { value: "disabled", label: "Disabled" },
+const TierOptions = [
+  { value: null, label: "All" },
+  { value: ProductTier.Basic, label: "Basic" },
+  { value: ProductTier.Premium, label: "Premium" },
+  { value: ProductTier.Deluxe, label: "Deluxe" },
 ];
 
-const ThemeOptions: DefaultOptionType[] = [
-  { value: "jack", label: "Jack" },
-  { value: "lucy", label: "Lucy" },
-  { value: "Yiminghe", label: "yiminghe" },
-  { value: "disabled", label: "Disabled" },
+const ThemeOptions = [
+  { value: null, label: "All" },
+  { value: ProductTheme.Colorful, label: "Colorful" },
+  { value: ProductTheme.Halloween, label: "Halloween" },
+  { value: ProductTheme.Light, label: "Light" },
+  { value: ProductTheme.Dark, label: "Dark" },
 ];
 
-const TimeOptions: DefaultOptionType[] = [
-  { value: "jack", label: "Jack" },
-  { value: "lucy", label: "Lucy" },
-  { value: "Yiminghe", label: "yiminghe" },
-  { value: "disabled", label: "Disabled" },
+const TimeOptions = [
+  { value: SortType.None, label: "None" },
+  { value: SortType.Desc, label: "Lastest" },
+  { value: SortType.Asc, label: "Oldest" },
 ];
 
-const PriceOptions: DefaultOptionType[] = [
-  { value: "jack", label: "Jack" },
-  { value: "lucy", label: "Lucy" },
-  { value: "Yiminghe", label: "yiminghe" },
-  { value: "disabled", label: "Disabled" },
+const PriceOptions = [
+  { value: SortType.None, label: "None" },
+  { value: SortType.Asc, label: "Low to high" },
+  { value: SortType.Desc, label: "High to low" },
 ];
 
 const ProductListFilter: FC = () => {
   const [form] = useForm();
+  const {
+    productStore: { getProductList, setProductFilter },
+  } = useStores();
+
   const marks: SliderSingleProps["marks"] = {
-    [SLIDER_RANGE[0]]: `${SLIDER_RANGE[0]} ETH`,
-    [SLIDER_RANGE[1]]: `${SLIDER_RANGE[1]} ETH`,
+    [SLIDER_RANGE[0]]: formatPrice(SLIDER_RANGE[0]),
+    [SLIDER_RANGE[1]]: formatPrice(SLIDER_RANGE[1]),
+  };
+
+  const initialValues: SearchProductListParam = {
+    q: "",
+    price: SLIDER_RANGE,
+    tier: null,
+    theme: null,
+    sortTime: SortType.Desc,
+    sortPrice: SortType.None,
+  };
+
+  const handleSubmit = (values: SearchProductListParam) => {
+    setProductFilter({ ...values, ...DEFAULT_PAGINATION });
+
+    getProductList();
+  };
+
+  const handleResetFilter = () => {
+    form.resetFields();
+    getProductList();
+  };
+
+  const handleFormValuesChange = (changedValue: SearchProductListParam) => {
+    if (changedValue?.sortPrice) {
+      form.setFieldValue("sortTime", SortType.None);
+    }
+
+    if (changedValue?.sortTime) {
+      form.setFieldValue("sortPrice", SortType.None);
+    }
   };
 
   return (
     <div className="product-list-filter-wrapper">
-      <Form form={form} layout="vertical">
+      <Form
+        form={form}
+        layout="vertical"
+        initialValues={initialValues}
+        onFinish={handleSubmit}
+        onValuesChange={handleFormValuesChange}
+      >
         <div className="filter-inputs">
-          <Item name="searchInput">
+          <Item name="q">
             <Input
               className="search-input"
               placeholder="Quick Search"
@@ -60,7 +103,6 @@ const ProductListFilter: FC = () => {
               min={SLIDER_RANGE[0]}
               max={SLIDER_RANGE[1]}
               range
-              defaultValue={SLIDER_RANGE}
               marks={marks}
               step={0.01}
               tooltip={{
@@ -68,28 +110,30 @@ const ProductListFilter: FC = () => {
               }}
             />
           </Item>
-          <Item label="TIER">
+          <Item name="tier" label="TIER">
             <Select options={TierOptions} />
           </Item>
-          <Item label="THEME">
+          <Item name="theme" label="THEME">
             <Select options={ThemeOptions} />
           </Item>
-          <Item label="TIME">
+          <Item name="sortTime" label="TIME">
             <Select options={TimeOptions} />
           </Item>
-          <Item label="PRICE">
+          <Item name="sortPrice" label="PRICE">
             <Select options={PriceOptions} />
           </Item>
         </div>
         <div className="filter-actions">
           <div className="reset-filter">
-            <Button type="text">
+            <Button type="text" onClick={handleResetFilter}>
               <FontAwesomeIcon icon={["fas", "xmark-circle"]} />
               Reset filter
             </Button>
           </div>
           <div className="search-button">
-            <Button type="primary">Search</Button>
+            <Button type="primary" htmlType="submit">
+              Search
+            </Button>
           </div>
         </div>
       </Form>
