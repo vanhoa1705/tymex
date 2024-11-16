@@ -1,6 +1,5 @@
 import RootAPI from "@/api";
-import { DEFAULT_PAGINATION } from "@/constants/general";
-import { SortType } from "@/enums";
+import { DEFAULT_FILTERS } from "@/constants/general";
 import { IProduct } from "@/interfaces";
 import type { GetProductListType, SearchProductListParam } from "@/types";
 import { action, makeObservable, observable } from "mobx";
@@ -23,10 +22,7 @@ export default class ProductStore {
   }
 
   @observable productList: IProduct[] = [];
-  @observable productFilters: SearchProductListParam = {
-    ...DEFAULT_PAGINATION,
-    sortTime: SortType.Desc,
-  };
+  @observable productFilters: SearchProductListParam = DEFAULT_FILTERS;
 
   @action.bound
   async getProductList(data?: GetProductListType) {

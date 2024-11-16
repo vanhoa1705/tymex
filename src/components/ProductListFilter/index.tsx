@@ -1,4 +1,4 @@
-import { DEFAULT_PAGINATION } from "@/constants/general";
+import { DEFAULT_FILTERS, DEFAULT_PAGINATION } from "@/constants/general";
 import { ProductTheme, ProductTier, SortType } from "@/enums";
 import { formatPrice } from "@/helpers";
 import { useStores } from "@/hooks";
@@ -59,14 +59,26 @@ const ProductListFilter: FC = () => {
     sortPrice: SortType.None,
   };
 
-  const handleSubmit = (values: SearchProductListParam) => {
+  const handleSubmit = async (values: SearchProductListParam) => {
     setProductFilter({ ...values, ...DEFAULT_PAGINATION });
 
-    getProductList();
+    await getProductList();
+
+    const productListEl = document.querySelector(
+      ".product-list-container .product-list"
+    );
+
+    if (productListEl) {
+      productListEl.scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   const handleResetFilter = () => {
     form.resetFields();
+    setProductFilter(DEFAULT_FILTERS);
     getProductList();
   };
 

@@ -26,6 +26,7 @@ const ProductListContainer: FC<IProductListContainerProps> = ({
           </Sider>
           <Content>{children}</Content>
         </Layout>
+        <div className="footer-product-list" />
       </Content>
       <Footer style={{ textAlign: "center" }}>
         Ant Design ©{new Date().getFullYear()} Created by Ant UED
