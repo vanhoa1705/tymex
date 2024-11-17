@@ -42,7 +42,12 @@ const PriceOptions = [
 const ProductListFilter: FC = () => {
   const [form] = useForm();
   const {
-    productStore: { getProductList, setProductFilter },
+    productStore: {
+      getProductList,
+      setProductFilter,
+      isOpenSearchAndFilterDrawer,
+      setIsOpenSearchAndFilterDrawer,
+    },
   } = useStores();
 
   const marks: SliderSingleProps["marks"] = {
@@ -59,11 +64,7 @@ const ProductListFilter: FC = () => {
     sortPrice: SortType.None,
   };
 
-  const handleSubmit = async (values: SearchProductListParam) => {
-    setProductFilter({ ...DEFAULT_FILTERS, ...values });
-
-    await getProductList();
-
+  const scrollToTop = () => {
     const productListEl = document.querySelector(
       ".product-list-container .product-list"
     );
@@ -76,10 +77,26 @@ const ProductListFilter: FC = () => {
     }
   };
 
-  const handleResetFilter = () => {
+  const handleSubmit = async (values: SearchProductListParam) => {
+    setProductFilter({ ...DEFAULT_FILTERS, ...values });
+
+    await getProductList();
+    scrollToTop();
+
+    if (isOpenSearchAndFilterDrawer) {
+      setIsOpenSearchAndFilterDrawer(false);
+    }
+  };
+
+  const handleResetFilter = async () => {
     form.resetFields();
     setProductFilter(DEFAULT_FILTERS);
-    getProductList();
+    await getProductList();
+    scrollToTop();
+
+    if (isOpenSearchAndFilterDrawer) {
+      setIsOpenSearchAndFilterDrawer(false);
+    }
   };
 
   const handleFormValuesChange = (changedValue: SearchProductListParam) => {

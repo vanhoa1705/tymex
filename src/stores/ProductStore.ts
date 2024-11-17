@@ -22,6 +22,7 @@ export default class ProductStore {
   }
 
   @observable productList: IProduct[] = [];
+  @observable isOpenSearchAndFilterDrawer = false;
   @observable productFilters: SearchProductListParam = DEFAULT_FILTERS;
 
   @action.bound
@@ -64,5 +65,10 @@ export default class ProductStore {
   @action.bound
   setProductFilter(productFilers: SearchProductListParam) {
     this.productFilters = productFilers;
+  }
+
+  @action.bound
+  setIsOpenSearchAndFilterDrawer(isOpen: boolean) {
+    this.isOpenSearchAndFilterDrawer = isOpen;
   }
 }

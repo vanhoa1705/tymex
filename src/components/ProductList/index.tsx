@@ -1,5 +1,5 @@
 import { useActionLoading, useStores } from "@/hooks";
-import { Button } from "antd";
+import { Button, Empty } from "antd";
 import { observer } from "mobx-react";
 import { FC, useEffect } from "react";
 import ProductItem from "./components/ProductItem";
@@ -32,17 +32,21 @@ const ProductList: FC = () => {
 
   return (
     <div className="product-list-wrapper">
-      {productList?.map((product) => (
-        <ProductItem product={product} key={product.id} />
-      ))}
-      {isLoading ? (
-        skeletonArray.map((item) => <ProductLoadingItem key={item} />)
+      {productList?.length ? (
+        <>
+          {productList?.map((product) => (
+            <ProductItem product={product} key={product.id} />
+          ))}
+          {isLoading &&
+            skeletonArray.map((item) => <ProductLoadingItem key={item} />)}
+          <div className="view-more-button">
+            <Button type="primary" onClick={onClickViewMore}>
+              View more
+            </Button>
+          </div>
+        </>
       ) : (
-        <div className="view-more-button">
-          <Button type="primary" onClick={onClickViewMore}>
-            View more
-          </Button>
-        </div>
+        <Empty />
       )}
     </div>
   );

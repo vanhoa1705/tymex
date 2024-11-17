@@ -9,11 +9,11 @@ import FooterPage from "@/components/FooterPage";
 
 const { Content, Sider } = Layout;
 
-interface IProductListContainerProps extends PropsWithChildren {
+interface IProductListLayoutProps extends PropsWithChildren {
   className?: string;
 }
 
-const ProductListContainer: FC<IProductListContainerProps> = ({
+const ProductListLayout: FC<IProductListLayoutProps> = ({
   children,
   className,
 }) => {
@@ -22,7 +22,7 @@ const ProductListContainer: FC<IProductListContainerProps> = ({
       <ProductListHeader />
       <Content className="product-list-content">
         <Layout className="main-layout">
-          <Sider width={350}>
+          <Sider width={350} className="product-filters-sider">
             <ProductListFilter />
           </Sider>
           <Content>{children}</Content>
@@ -34,4 +34,4 @@ const ProductListContainer: FC<IProductListContainerProps> = ({
   );
 };
 
-export default ProductListContainer;
+export default ProductListLayout;

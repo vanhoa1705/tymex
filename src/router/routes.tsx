@@ -1,5 +1,5 @@
-import Home from "@/containers/Home";
-import ProductListContainer from "@/layouts/ProductListLayout";
+import ProductListContainer from "@/containers/ProductListContainer";
+import ProductListLayout from "@/layouts/ProductListLayout";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const router = () => {
@@ -9,13 +9,11 @@ const router = () => {
         <Route
           path="/"
           element={
-            <ProductListContainer>
-              <Home />
-            </ProductListContainer>
+            <ProductListLayout>
+              <ProductListContainer />
+            </ProductListLayout>
           }
         />
-        <Route path="/home" element={<>Home</>} />
-        <Route path="/about" element={<>About</>} />
       </Routes>
     </Router>
   );

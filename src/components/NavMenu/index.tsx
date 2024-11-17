@@ -1,39 +1,52 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Dropdown, Menu, MenuProps } from "antd";
+import { Button, Menu } from "antd";
 import { FC } from "react";
+import "./style.less";
 
-const items = new Array(5).fill(null).map((_, index) => ({
-  key: index + 1,
-  label: `nav ${index + 1}`,
-}));
-
-const dropdownItems: MenuProps["items"] = [
+const items = [
   {
-    key: "1",
-    label: "1st menu item",
+    key: "home",
+    label: "Home",
   },
   {
-    key: "2",
-    label: "2nd menu item",
+    key: "aboutUs",
+    label: "About Us",
   },
   {
-    key: "3",
-    label: "3rd menu item",
+    key: "ourTeam",
+    label: "Our Team",
+  },
+  {
+    key: "marketplace",
+    label: "Marketplace",
+  },
+  {
+    key: "roadmap",
+    label: "Roadmap",
+  },
+  {
+    key: "whitepaper",
+    label: "Whitepaper",
   },
 ];
 
 const NavMenu: FC = () => {
   return (
-    <div className="nav-menu">
-      <Menu className="nav-menu-wrapper" mode="horizontal" items={items} />
+    <div className="nav-menu-wrapper">
+      <Menu
+        className="nav-menu"
+        mode="horizontal"
+        items={items}
+        style={{ flex: 1, minWidth: 0 }}
+        activeKey="marketplace"
+        theme="dark"
+      />
       <div className="extra-header">
         <Button type="primary">Connect Wallet</Button>
-        <Dropdown menu={{ items: dropdownItems }} placement="bottom">
-          <Button className="language-dropdown">
-            <FontAwesomeIcon icon={["fas", "globe"]} />
-            <FontAwesomeIcon icon={["fas", "chevron-down"]} />
-          </Button>
-        </Dropdown>
+        <Button className="language-dropdown">
+          <FontAwesomeIcon icon={["fas", "globe"]} />
+          <FontAwesomeIcon icon={["fas", "chevron-down"]} />
+        </Button>
       </div>
     </div>
   );

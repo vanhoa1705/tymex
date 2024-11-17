@@ -13,7 +13,7 @@ const ProductItem: FC<IProductItemProps> = ({ product }) => {
   return (
     <div className="product-item-wrapper">
       <div className="product-image">
-        <img src={product.author.avatar} alt="product-image" />
+        <img src={product.author.avatar} alt="product-image" loading="lazy" />
         <div className="category">{product.category}</div>
         {product.isFavorite && (
           <div className="favorite">

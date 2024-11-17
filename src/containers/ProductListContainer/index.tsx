@@ -1,4 +1,5 @@
 import ProductList from "@/components/ProductList";
+import SearchAndFilterDrawer from "@/components/SearchAndFilterDrawer";
 import { DEFAULT_PAGINATION } from "@/constants/general";
 import { ProductCategory } from "@/enums";
 import { useStores } from "@/hooks";
@@ -7,10 +8,16 @@ import classNames from "classnames";
 import { observer } from "mobx-react";
 import { FC } from "react";
 import "./style.less";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Home: FC = () => {
+const ProductListContainer: FC = () => {
   const {
-    productStore: { productFilters, setProductFilter, getProductList },
+    productStore: {
+      productFilters,
+      setProductFilter,
+      getProductList,
+      setIsOpenSearchAndFilterDrawer,
+    },
   } = useStores();
 
   const onClickCategory = (category: ProductCategory) => {
@@ -26,6 +33,15 @@ const Home: FC = () => {
   return (
     <div className="product-list-container">
       <div className="categories">
+        <div className="filter-button">
+          <Button
+            type="primary"
+            onClick={() => setIsOpenSearchAndFilterDrawer(true)}
+          >
+            <FontAwesomeIcon icon={["fas", "filter"]} />
+          </Button>
+        </div>
+
         <Button
           className={classNames("category", {
             isActive: productFilters?.category === null,
@@ -48,9 +64,10 @@ const Home: FC = () => {
       </div>
       <div className="product-list">
         <ProductList />
+        <SearchAndFilterDrawer />
       </div>
     </div>
   );
 };
 
-export default observer(Home);
+export default observer(ProductListContainer);

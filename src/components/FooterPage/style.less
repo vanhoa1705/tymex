@@ -3,7 +3,7 @@
 .footer-page-wrapper {
   background-color: #17161a;
   color: @white;
-  padding: 60px 160px;
+  padding: 60px 100px;
 
   .footer-title {
     padding-bottom: 20px;
@@ -21,6 +21,9 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+    column-gap: 30px;
+    row-gap: 60px;
+    flex-wrap: wrap;
 
     .navigations {
       width: 360px;
@@ -83,7 +86,19 @@
 
     .links {
       display: flex;
-      gap: 60px;
+      flex-wrap: wrap;
+      row-gap: 20px;
+      column-gap: 60px;
+    }
+  }
+
+  @media (max-width: 1450px) {
+    padding: 60px 160px;
+
+    .footer-detail {
+      .subcribe {
+        width: 100%;
+      }
     }
   }
 }

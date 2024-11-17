@@ -1,3 +1,5 @@
+@import "@/styles/variables.less";
+
 .product-list-layout {
   .ant-layout-header {
     background-image: url("/public/assets/images/background-header.jpeg");
@@ -9,43 +11,19 @@
     padding: 0;
     height: 700px;
 
-    .nav-menu {
+    .nav-menu-wrapper {
       display: flex;
       justify-content: space-between;
       background-color: #17161ab2;
-
-      .ant-menu {
-        flex: 1;
-        background-color: transparent;
-
-        &-item {
-          font-family: Drone Ranger Pro, sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          color: #ffffff;
-        }
-      }
-
-      .extra-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        .language-dropdown {
-          background-color: transparent;
-          border: none;
-          color: #ffffff;
-
-          .ant-wave {
-            display: none;
-          }
-        }
-      }
     }
   }
 
-  .ant-layout-sider {
+  .product-filters-sider {
     background-color: transparent;
+
+    @media (max-width: 1450px) {
+      display: none;
+    }
   }
 
   .product-list-content {
@@ -85,6 +63,14 @@
         display: flex;
         justify-content: center;
       }
+    }
+
+    @media (max-width: 1450px) {
+      padding: 0 50px;
+    }
+
+    @media (max-width: 960px) {
+      padding: 0 20px;
     }
   }
 }
