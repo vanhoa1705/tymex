@@ -1,4 +1,4 @@
-import { DEFAULT_FILTERS, DEFAULT_PAGINATION } from "@/constants/general";
+import { DEFAULT_FILTERS } from "@/constants/general";
 import { ProductTheme, ProductTier, SortType } from "@/enums";
 import { formatPrice } from "@/helpers";
 import { useStores } from "@/hooks";
@@ -60,7 +60,7 @@ const ProductListFilter: FC = () => {
   };
 
   const handleSubmit = async (values: SearchProductListParam) => {
-    setProductFilter({ ...values, ...DEFAULT_PAGINATION });
+    setProductFilter({ ...DEFAULT_FILTERS, ...values });
 
     await getProductList();
 

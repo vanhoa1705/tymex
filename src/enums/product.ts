@@ -17,3 +17,15 @@ export enum SortType {
   Asc = "asc",
   Desc = "desc",
 }
+
+export enum ProductCategory {
+  UpperBody = "Upper Body",
+  LowerBody = "Lower Body",
+  Hat = "Hat",
+  Shoes = "Shoes",
+  Accessory = "Accessory",
+  Legendary = "Legendary",
+  Mythic = "Mythic",
+  Epic = "Epic",
+  Rare = "Rare",
+}

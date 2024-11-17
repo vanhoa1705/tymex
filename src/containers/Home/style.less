@@ -1,11 +1,39 @@
+@import "@/styles/variables.less";
+
 .product-list-container {
   max-height: 2000px;
-  display: flex;
-  flex-direction: column;
 
   .product-list {
     flex: 1;
     max-height: 2000px;
     overflow: auto;
+  }
+
+  .categories {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 30px;
+    overflow-x: scroll;
+
+    .category {
+      background-image: @inactive-background-gradient;
+      background-color: transparent;
+      border-color: transparent;
+
+      &:not(:disabled):not(.ant-btn-disabled) {
+        &:hover,
+        &:active {
+          background-image: @active-background-gradient;
+          border-color: transparent;
+        }
+      }
+
+      &.isActive {
+        background-image: @active-background-gradient;
+      }
+    }
   }
 }

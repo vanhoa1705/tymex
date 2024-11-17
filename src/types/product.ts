@@ -1,4 +1,4 @@
-import { ProductTheme, ProductTier, SortType } from "@/enums";
+import { ProductCategory, ProductTheme, ProductTier, SortType } from "@/enums";
 
 export type SearchProductListParam = {
   q?: string;
@@ -9,6 +9,7 @@ export type SearchProductListParam = {
   theme?: ProductTheme;
   sortTime?: SortType;
   sortPrice?: SortType;
+  category?: ProductCategory;
 };
 
 export type PaginationType = {

@@ -11,4 +11,5 @@ export const DEFAULT_FILTERS = {
   ...DEFAULT_PAGINATION,
   sortTime: SortType.Desc,
   sortPrice: SortType.None,
+  category: null,
 };
